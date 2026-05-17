@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 200 300" width="200" height="300"
+     onload="alert('XSS-via-SVG')">
+
+  <!-- Paperclip shape -->
+  <g fill="none" stroke="#888" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Outer loop -->
+    <path d="M 80 260
+             L 80 80
+             A 30 30 0 0 1 120 80
+             L 120 230
+             A 15 15 0 0 1 90 230
+             L 90 100
+             A 8 8 0 0 1 110 100
+             L 110 220" />
+  </g>
+
+  <!-- Additional XSS vectors for testing -->
+  <text x="20" y="290" font-size="8" fill="#ccc" onmouseover="alert('XSS-mouseover')">
+    hover me
+  </text>
+
+  <animate attributeName="opacity" values="1;1" dur="1s"
+           onbegin="console.log('XSS-onbegin')" />
+
+</svg>
